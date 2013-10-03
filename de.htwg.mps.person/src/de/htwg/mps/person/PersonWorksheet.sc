@@ -16,8 +16,9 @@ object PersonWorksheet {
   max(17,4)                                       //> res3: Int = 17
   max(4,17)                                       //> res4: Int = 17
   
-  class Person(name:String)
+  class Person(val name:String)
   
   val peter = new Person("Peter")                 //> peter  : de.htwg.mps.person.PersonWorksheet.Person = de.htwg.mps.person.Pers
-                                                  //| onWorksheet$$anonfun$main$1$Person$1@65654dfb
+                                                  //| onWorksheet$$anonfun$main$1$Person$1@5de2cdbe
+  peter.name.toString                             //> res5: String = Peter
 }
