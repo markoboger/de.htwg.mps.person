@@ -15,4 +15,9 @@ object PersonWorksheet {
   def max(a:Int, b:Int) = if (a>b) a else b       //> max: (a: Int, b: Int)Int
   max(17,4)                                       //> res3: Int = 17
   max(4,17)                                       //> res4: Int = 17
+  
+  class Person(name:String)
+  
+  val peter = new Person("Peter")                 //> peter  : de.htwg.mps.person.PersonWorksheet.Person = de.htwg.mps.person.Pers
+                                                  //| onWorksheet$$anonfun$main$1$Person$1@65654dfb
 }
