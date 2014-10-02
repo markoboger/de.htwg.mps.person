@@ -26,8 +26,8 @@ class Date(val year: Int, val month: Int, val day: Int) extends Ordered[Date] {
   }
   def anniversary(nth: Int) = new Date(year + nth, month, day)
   def anniversary = new Date(Today.year, month, day)
-  def fullYearsSince(date: Date): Int = if (this <= date) {
-    if (this.anniversary <= date.anniversary) date.year - year else date.year - year - 1
+  def fullYearsSince(that: Date): Int = if (this <= that) {
+    if (this.anniversary <= that.anniversary) that.year - year else that.year - year - 1
   } else 0
   def fullYearsSince: Int = fullYearsSince(Today.date)
   override def toString = year + "-" + month + "-" + day
