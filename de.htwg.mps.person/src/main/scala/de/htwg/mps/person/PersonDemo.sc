@@ -34,11 +34,12 @@ import com.github.nscala_time.time.Imports.DateTime
 
   val marko = new Person("Marko", new Date(1969, 5, 23))
                                                   //> marko  : de.htwg.mps.person.PersonDemo.Person = de.htwg.mps.person.PersonDe
-                                                  //| mo$$anonfun$main$1$Person$1@7cec9b3a
+                                                  //| mo$$anonfun$main$1$Person$1@c0df980
   marko.name                                      //> res1: String = Marko
-  marko.age                                       //> res2: Int = 45
-  marko.birthdate.anniversary                     //> res3: de.htwg.mps.person.PersonDemo.Date = 2014-5-23
+  marko.age                                       //> res2: Int = 46
+  marko.birthdate.anniversary                     //> res3: de.htwg.mps.person.PersonDemo.Date = 2015-5-23
   marko.birthdate.anniversary(50)                 //> res4: de.htwg.mps.person.PersonDemo.Date = 2019-5-23
+  
   
   val date1 = new Date(2000,1,1)                  //> date1  : de.htwg.mps.person.PersonDemo.Date = 2000-1-1
   val date2 = new Date(2000,2,2)                  //> date2  : de.htwg.mps.person.PersonDemo.Date = 2000-2-2

@@ -9,9 +9,9 @@ object PersonDemo2 {
 
   val marko = new Person("Marko", new Date(1969, 5, 23))
                                                   //> marko  : de.htwg.mps.person.PersonDemo2.Person = de.htwg.mps.person.PersonDe
-                                                  //| mo2$Person@75ee0563
+                                                  //| mo2$Person@48f4104f
   marko.name                                      //> res0: String = Marko
-  marko.age == 45                                 //> res1: Boolean = true
+  marko.age == 46                                 //> res1: Boolean = true
   marko.age(new Date(2000, 1, 1))                 //> res2: Int = 30
-  Today.now                                       //> res3: org.joda.time.DateTime = 2014-10-02T13:00:13.800+02:00
+  Today.now                                       //> res3: org.joda.time.DateTime = 2015-10-04T17:29:59.210+02:00
 }

@@ -18,7 +18,7 @@ trait Ordered[A] {
   def >=(that: A): Boolean = (this compare that) >= 0
 }
 
-class Date(val year: Int, val month: Int, val day: Int) extends Ordered[Date] {
+case class Date(val year: Int, val month: Int, val day: Int) extends Ordered[Date] {
   override def compare(that: Date) = {
     if (this.year != that.year) this.year - that.year
     else if (this.month != that.month) this.month - that.month
