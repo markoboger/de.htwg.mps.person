@@ -1,7 +1,7 @@
 package de.htwg.mps.person
 
 object PersonWorksheet {
-  1+2                                             //> res0: Int(3) = 3
+  1+2+3                                           //> res0: Int = 6
   
   val peter = new Person("Peter", new Date(2008,7,4))
                                                   //> peter  : de.htwg.mps.person.Person = Person(Peter,2008-7-4)
