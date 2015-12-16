@@ -1,24 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-  <classpathentry output="target/scala-2.11/classes" kind="src" path="src/main/scala"/>
-  <classpathentry output="target/scala-2.11/classes" kind="src" path="src/main/java"/>
-  <classpathentry output="target/scala-2.11/test-classes" kind="src" path="src/test/scala"/>
-  <classpathentry output="target/scala-2.11/test-classes" kind="src" path="src/test/java"/>
-  <classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/com.github.nscala-time/nscala-time_2.11/jars/nscala-time_2.11-2.2.0.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.8.2.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.2.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/Documents/TypesafeActivator/activator-dist-1.3.6/repository/org.scalatest/scalatest_2.11/2.2.4/bundles/scalatest_2.11.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.2.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.specs2/specs2-core_2.11/jars/specs2-core_2.11-3.0.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.specs2/specs2-matcher_2.11/jars/specs2-matcher_2.11-3.0.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.specs2/specs2-common_2.11/jars/specs2-common_2.11-3.0.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.scalaz/scalaz-core_2.11/bundles/scalaz-core_2.11-7.1.1.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.2.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.scalaz/scalaz-concurrent_2.11/bundles/scalaz-concurrent_2.11-7.1.1.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.scalaz/scalaz-effect_2.11/bundles/scalaz-effect_2.11-7.1.1.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.scalaz.stream/scalaz-stream_2.11/bundles/scalaz-stream_2.11-0.6a.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/org.typelevel/scodec-bits_2.11/bundles/scodec-bits_2.11-1.0.4.jar"/>
-  <classpathentry kind="lib" path="/Users/markoboger/.ivy2/cache/com.chuusai/shapeless_2.11/bundles/shapeless_2.11-2.0.0.jar"/>
-  <classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
-  <classpathentry kind="output" path="bin"/>
+	<classpathentry kind="src" path="src/main/scala"/>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/test/scala"/>
+	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_CONTAINER"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/com.github.nscala-time/nscala-time_2.11/jars/nscala-time_2.11-2.2.0.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/joda-time/joda-time/jars/joda-time-2.8.2.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.joda/joda-convert/jars/joda-convert-1.2.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.scalatest/scalatest_2.11/bundles/scalatest_2.11-2.2.4.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.scala-lang.modules/scala-xml_2.11/bundles/scala-xml_2.11-1.0.2.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.specs2/specs2-core_2.11/jars/specs2-core_2.11-3.0.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.specs2/specs2-matcher_2.11/jars/specs2-matcher_2.11-3.0.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.specs2/specs2-common_2.11/jars/specs2-common_2.11-3.0.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.scalaz/scalaz-core_2.11/bundles/scalaz-core_2.11-7.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.scala-lang.modules/scala-parser-combinators_2.11/bundles/scala-parser-combinators_2.11-1.0.2.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.scalaz/scalaz-concurrent_2.11/bundles/scalaz-concurrent_2.11-7.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.scalaz/scalaz-effect_2.11/bundles/scalaz-effect_2.11-7.1.1.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.scalaz.stream/scalaz-stream_2.11/bundles/scalaz-stream_2.11-0.6a.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/org.typelevel/scodec-bits_2.11/bundles/scodec-bits_2.11-1.0.4.jar"/>
+	<classpathentry kind="lib" path="/Users/mboger/.ivy2/cache/com.chuusai/shapeless_2.11/bundles/shapeless_2.11-2.0.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
 </classpath>
