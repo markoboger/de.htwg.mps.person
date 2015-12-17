@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestJavaTimeTest {
+public class JavaTimeTest {
 	
 	@Test
 	public void testJavaTime() {
