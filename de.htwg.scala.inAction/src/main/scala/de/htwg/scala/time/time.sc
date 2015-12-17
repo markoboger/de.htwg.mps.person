@@ -1,7 +1,5 @@
 package de.htwg.scala.time
 
-import de.htwg.scala.time.Time
-
 object time {
 //Java inside Scala!!!
 //Java Construtor, Getter and Equals
@@ -34,5 +32,4 @@ object time {
   println(stime2)
   stime2 += Time(0,20)
   println(stime2)
-  
 }
