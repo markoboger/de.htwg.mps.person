@@ -5,9 +5,12 @@ public class JavaTime {
 	private int hours;
 	private int minutes;
 
+	private static final int HOURS_PER_DAY = 24;
+	private static final int MINUTES_PER_HOUR = 60;
+
 	public JavaTime(int hours, int minutes) {
-		this.hours = hours % 24 + minutes / 60;
-		this.minutes = minutes % 60;
+		this.hours = hours % HOURS_PER_DAY + minutes / MINUTES_PER_HOUR;
+		this.minutes = minutes % MINUTES_PER_HOUR;
 	}
 
 	public int getHours() {
@@ -19,38 +22,37 @@ public class JavaTime {
 	}
 
 	public int getAsMinutes() {
-		return hours * 60 + minutes;
+		return hours * MINUTES_PER_HOUR + minutes;
 	}
 
 	public void plus(JavaTime that) {
-		int newMinutes = (this.minutes + that.minutes) % 60;
-		int newHours = (this.hours + that.hours) % 24 + (this.minutes + that.minutes) / 60;
+		int newMinutes = (this.minutes + that.minutes) % MINUTES_PER_HOUR;
+		int newHours = (this.hours + that.hours) % HOURS_PER_DAY + (this.minutes + that.minutes) / MINUTES_PER_HOUR;
 		this.minutes = newMinutes;
 		this.hours = newHours;
 	}
 
 	public void minus(JavaTime that) {
-		while (this.getAsMinutes() < that.getAsMinutes()) this.hours = this.hours + 24;
-		int newMinutes = (this.getAsMinutes() - that.getAsMinutes()) % 60;
-		int newHours = (this.getAsMinutes() - that.getAsMinutes()) / 60;
+		while (this.getAsMinutes() < that.getAsMinutes())
+			this.hours = this.hours + HOURS_PER_DAY;
+		int newMinutes = (this.getAsMinutes() - that.getAsMinutes()) % MINUTES_PER_HOUR;
+		int newHours = (this.getAsMinutes() - that.getAsMinutes()) / MINUTES_PER_HOUR;
 		this.minutes = newMinutes;
 		this.hours = newHours;
 	}
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
 		if (obj == null)
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		JavaTime that = (JavaTime) obj;
-		if (hours != that.hours)
-			return false;
-		if (minutes != that.minutes)
-			return false;
-		return true;
+		if (this == obj)
+			return true;
+		if (getClass() == obj.getClass()) {
+			JavaTime that = (JavaTime) obj;
+			if (hours == that.hours && minutes == that.minutes)
+				return true;
+		}
+		return false;
 	}
 
 	@Override
