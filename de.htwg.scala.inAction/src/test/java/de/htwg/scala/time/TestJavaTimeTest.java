@@ -4,10 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import de.htwg.scala.time.JavaTime;
-
-public class TestJavaTime {
-
+public class TestJavaTimeTest {
+	
 	@Test
 	public void testJavaTime() {
 		JavaTime jtime;
@@ -28,6 +26,7 @@ public class TestJavaTime {
 		assertEquals(8, jtime.getHours());
 		assertEquals(40, jtime.getMinutes());
 	}
+	
 	
 	@Test
 	public void testGetAsMinutes() {
