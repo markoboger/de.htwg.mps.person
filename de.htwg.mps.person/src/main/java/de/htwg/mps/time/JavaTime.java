@@ -2,61 +2,68 @@ package de.htwg.mps.time;
 
 public class JavaTime {
 
-    private final int hours;
+	private int hours;
+	private int minutes;
 
-    private final int minutes;
+	public JavaTime(int hours, int minutes) {
+		this.hours = hours % 24 + minutes / 60;
+		this.minutes = minutes % 60;
+	}
 
-    private final int asMinutes;
+	public int getHours() {
+		return hours;
+	}
 
-    public JavaTime(int hours, int minutes) {
-        this.hours = hours;
-        this.minutes = minutes;
-        this.asMinutes = hours * 60 + minutes;
-    }
+	public int getMinutes() {
+		return minutes;
+	}
 
-    public int getHours() {
-        return hours;
-    }
+	public int getAsMinutes() {
+		return hours * 60 + minutes;
+	}
 
-    public int getMinutes() {
-        return minutes;
-    }
+	public void plus(JavaTime that) {
+		int newMinutes = (this.minutes + that.minutes) % 60;
+		int newHours = (this.hours + that.hours) % 24 + (this.minutes + that.minutes) / 60;
+		this.minutes = newMinutes;
+		this.hours = newHours;
+	}
 
-    public int getAsMinutes() {
-        return asMinutes;
-    }
+	public void minus(JavaTime that) {
+		while (this.getAsMinutes() < that.getAsMinutes()) this.hours = this.hours + 24;
+		int newMinutes = (this.getAsMinutes() - that.getAsMinutes()) % 60;
+		int newHours = (this.getAsMinutes() - that.getAsMinutes()) / 60;
+		this.minutes = newMinutes;
+		this.hours = newHours;
+	}
 
-    public int minus(JavaTime that) {
-        return this.asMinutes - that.asMinutes;
-    }
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		JavaTime that = (JavaTime) obj;
+		if (hours != that.hours)
+			return false;
+		if (minutes != that.minutes)
+			return false;
+		return true;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        JavaTime other = (JavaTime) obj;
-        if (hours != other.hours)
-            return false;
-        if (minutes != other.minutes)
-            return false;
-        return true;
-    }
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + hours;
+		result = prime * result + minutes;
+		return result;
+	}
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + hours;
-        result = prime * result + minutes;
-        return result;
-    }
-    
-    @Override
-    public String toString() {
-    	return String.format("%02d:%02d", hours, minutes);
-    }
+	@Override
+	public String toString() {
+		return String.format("%02d:%02d", hours, minutes);
+	}
 }
