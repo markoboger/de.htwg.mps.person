@@ -13,8 +13,9 @@ object PersonWorksheet {
   mary.age( Date(1966,1,1))                       //> res4: Int = 1
   mary.age( Date(1965,12,31))                     //> res5: Int = 0
   
-  
-  
+  peter < mary                                    //> res6: Boolean = true
+  paul > peter                                    //> res7: Boolean = true
+  peter < paul && paul < mary                     //> res8: Boolean = true
   
    def greeting(p: Person) = p match {
     case kid if (kid.age <= 12) => "Hello " + kid.name
