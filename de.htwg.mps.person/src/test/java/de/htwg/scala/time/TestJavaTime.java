@@ -1,8 +1,10 @@
-package de.htwg.mps.time;
+package de.htwg.scala.time;
 
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import de.htwg.scala.time.JavaTime;
 
 public class TestJavaTime {
 

@@ -1,7 +1,10 @@
-package de.htwg.mps.person
+package de.htwg.scala.person
 
 import org.scalatest.WordSpec
 import org.scalatest.Matchers._
+
+import de.htwg.scala.person.Date;
+import de.htwg.scala.person.Person;
 
 class PersonSpec extends WordSpec {
   

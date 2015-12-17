@@ -1,6 +1,9 @@
-package de.htwg.mps.time
+package de.htwg.scala.time
 
-case class Time(hours: Int = 0, minutes: Int = 0) {
+import de.htwg.scala.time.+(tha;
+import de.htwg.scala.time.Time;
+
+class Time(hours: Int = 0, minutes: Int = 0) {
 
   val HoursPerDay = 24;
   val MinutesPerHour = 60;

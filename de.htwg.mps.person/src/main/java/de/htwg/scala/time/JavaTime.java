@@ -1,4 +1,4 @@
-package de.htwg.mps.time;
+package de.htwg.scala.time;
 
 public class JavaTime {
 

@@ -1,4 +1,4 @@
-package de.htwg.mps.person
+package de.htwg.scala.person
 
 case class Person(val name:String, val birthdate:Date) extends Ordered[Person]{
   override def compare(that: Person) = {

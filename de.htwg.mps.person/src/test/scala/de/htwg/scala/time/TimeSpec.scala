@@ -1,4 +1,4 @@
-package de.htwg.mps.time
+package de.htwg.scala.time
 
 import org.scalatest.WordSpec
 import org.scalatest.Matchers._

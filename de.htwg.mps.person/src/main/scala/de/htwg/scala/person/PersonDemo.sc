@@ -1,4 +1,4 @@
-package de.htwg.mps.person
+package de.htwg.scala.person
 
 object PersonDemo {
   1 + 2                                           //> res0: Int(3) = 3
@@ -33,15 +33,15 @@ import com.github.nscala_time.time.Imports.DateTime
   }
 
   val marko = new Person("Marko", new Date(1969, 5, 23))
-                                                  //> marko  : de.htwg.mps.person.PersonDemo.Person = de.htwg.mps.person.PersonDe
-                                                  //| mo$$anonfun$main$1$Person$1@c0df980
+                                                  //> marko  : de.htwg.scala.person.PersonDemo.Person = de.htwg.scala.person.Pers
+                                                  //| onDemo$$anonfun$main$1$Person$1@6aaa5eb0
   marko.name                                      //> res1: String = Marko
   marko.age                                       //> res2: Int = 46
-  marko.birthdate.anniversary                     //> res3: de.htwg.mps.person.PersonDemo.Date = 2015-5-23
-  marko.birthdate.anniversary(50)                 //> res4: de.htwg.mps.person.PersonDemo.Date = 2019-5-23
+  marko.birthdate.anniversary                     //> res3: de.htwg.scala.person.PersonDemo.Date = 2015-5-23
+  marko.birthdate.anniversary(50)                 //> res4: de.htwg.scala.person.PersonDemo.Date = 2019-5-23
   
   
-  val date1 = new Date(2000,1,1)                  //> date1  : de.htwg.mps.person.PersonDemo.Date = 2000-1-1
-  val date2 = new Date(2000,2,2)                  //> date2  : de.htwg.mps.person.PersonDemo.Date = 2000-2-2
+  val date1 = new Date(2000,1,1)                  //> date1  : de.htwg.scala.person.PersonDemo.Date = 2000-1-1
+  val date2 = new Date(2000,2,2)                  //> date2  : de.htwg.scala.person.PersonDemo.Date = 2000-2-2
   date1 < date2                                   //> res5: Boolean = true
 }

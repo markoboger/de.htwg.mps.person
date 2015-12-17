@@ -1,4 +1,4 @@
-package de.htwg.mps.person
+package de.htwg.scala.person
 
 import com.github.nscala_time.time.Imports.DateTime
 
