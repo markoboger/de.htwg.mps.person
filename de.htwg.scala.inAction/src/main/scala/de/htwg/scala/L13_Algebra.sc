@@ -3,8 +3,10 @@ package de.htwg
 object L13_Algebra {
   import spire.math.Integral
   import spire.math.Rational
+  import spire.math.Number
   import spire.math.Complex
 	import spire.implicits._
+	import spire.algebra._
 	
 	val d1 = 2/3.0                            //> d1  : Double = 0.6666666666666666
 	val d2 = 1/3.0                            //> d2  : Double = 0.3333333333333333
@@ -33,5 +35,12 @@ object L13_Algebra {
   euclidGcd(42, 96)                               //> res2: Int = 6
 	euclidGcd(42L, 96L)                       //> res3: Long = 6
 	euclidGcd(BigInt(42), BigInt(96))         //> res4: scala.math.BigInt = 6
+	
+	val n1 = Number(3)                        //> n1  : spire.math.Number = 3
+	val n2 = Number(3.14)                     //> n2  : spire.math.Number = 3.14
+	val n3 = Number(1)/Number(3)              //> n3  : spire.math.Number = 0.3333333333333333
+	val n4: Number = 7                        //> n4  : spire.math.Number = 7
+	val n5: Number = n2 * n4                  //> n5  : spire.math.Number = 21.98
+	
 
 }
