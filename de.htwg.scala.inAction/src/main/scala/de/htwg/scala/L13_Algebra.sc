@@ -1,10 +1,7 @@
 package de.htwg
 
 object L13_Algebra {
-  import spire.math.Integral
-  import spire.math.Rational
-  import spire.math.Number
-  import spire.math.Complex
+  import spire.math._
 	import spire.implicits._
 	import spire.algebra._
 	
@@ -35,6 +32,7 @@ object L13_Algebra {
   euclidGcd(42, 96)                               //> res2: Int = 6
 	euclidGcd(42L, 96L)                       //> res3: Long = 6
 	euclidGcd(BigInt(42), BigInt(96))         //> res4: scala.math.BigInt = 6
+	euclidGcd(SafeLong(42), SafeLong(96))     //> res5: spire.math.SafeLong = 6
 	
 	val n1 = Number(3)                        //> n1  : spire.math.Number = 3
 	val n2 = Number(3.14)                     //> n2  : spire.math.Number = 3.14
@@ -43,4 +41,13 @@ object L13_Algebra {
 	val n5: Number = n2 * n4                  //> n5  : spire.math.Number = 21.98
 	
 
+	def reduce[A:Semigroup](xs:Seq[A]) = xs.reduce( _ |+| _)
+                                                  //> reduce: [A](xs: Seq[A])(implicit evidence$3: spire.algebra.Semigroup[A])A
+	
+	val list1 = List(1,2,3,4)                 //> list1  : List[Int] = List(1, 2, 3, 4)
+	val list2 = List(r"1/3", r"1/4", r"1/5", r"1/6")
+                                                  //> list2  : List[spire.math.Rational] = List(1/3, 1/4, 1/5, 1/6)
+  list1.reduce(_ + _)                             //> res6: Int = 10
+  //reduce(list1)
+	
 }
