@@ -16,6 +16,7 @@ object TimeWorksheet {
   Time(0,0)                                       //> res5: de.htwg.scala.time.Time = 00:00
   Time(minutes = 45)                              //> res6: de.htwg.scala.time.Time = 00:45
   Time(minutes = 45, hours = 1)                   //> res7: de.htwg.scala.time.Time = 01:45
+  
 //Getter and Equals
   val stime1 = new Time(8, 40)                    //> stime1  : de.htwg.scala.time.Time = 08:40
   stime1.hours                                    //> res8: Int = 8

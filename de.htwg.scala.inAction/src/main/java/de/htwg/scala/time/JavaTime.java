@@ -68,4 +68,11 @@ public class JavaTime {
 	public String toString() {
 		return String.format("%02d:%02d", hours, minutes);
 	}
+	
+	public static void main (String[] args ) {
+		JavaTime jtime = new JavaTime(8,40);
+		System.out.println("The meeting will start at " + jtime + "." );
+		jtime.plus(new JavaTime(0,20));
+		System.out.println("The meeting will end at " + jtime + "." );
+	}
 }
