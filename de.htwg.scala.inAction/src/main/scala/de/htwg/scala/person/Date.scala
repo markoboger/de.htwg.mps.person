@@ -24,8 +24,8 @@ case class Date(year: Int = Today.year, month: Int = Today.month, day: Int = Tod
     else if (this.month != that.month) this.month - that.month
     else this.day - that.day
   }
-  def anniversary(nth: Int) = new Date(year + nth, month, day)
-  def anniversary = new Date(Today.year, month, day)
+  def anniversary(nth: Int) = copy(year = year + nth)
+  def anniversary = copy(year = Today.year)
   def fullYearsSince(that: Date): Int = if (this <= that) {
     if (this.anniversary <= that.anniversary) that.year - year else that.year - year - 1
   } else 0
