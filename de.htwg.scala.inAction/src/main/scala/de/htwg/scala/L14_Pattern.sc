@@ -10,7 +10,7 @@ object L14_Pattern {
     def singletonFunction = println("I am a singleton")
   }
 
-  Singleton.singletonFunction                     //> I am a singleton
+  Singleton.singletonFunction
 
   // Strategy1
 
@@ -27,7 +27,7 @@ object L14_Pattern {
     var strategy = if (scala.util.Random.nextInt() % 2 == 0) new Strategy1 else new Strategy2
   }
 
-  StrategyContext1.strategy.execute               //> I am strategy 1
+  StrategyContext1.strategy.execute
 
   // Strategy2
 
@@ -39,7 +39,7 @@ object L14_Pattern {
     def strategy2 = println("I am strategy 2")
   }
 
-  Context2.strategy                               //> I am strategy 1
+  Context2.strategy
 
   // State1
   trait Event
@@ -71,9 +71,8 @@ object L14_Pattern {
     def handle(e: Event) = state = state.handle(e)
   }
 
-  StateContext1.handle(new OnEvent)               //> I am Off
-                                                  //| I am On
-  StateContext1.handle(new OffEvent)              //> I am Off
+  StateContext1.handle(new OnEvent)
+  StateContext1.handle(new OffEvent)
 
   //State2
 
@@ -83,8 +82,23 @@ object L14_Pattern {
       case off: OffEvent => println("I am off")
     }
   }
-  
-  StateContext2.handle(OnEvent())                 //> I am on
-  StateContext2.handle(OffEvent())                //> I am off
+
+  StateContext2.handle(OnEvent())
+  StateContext2.handle(OffEvent())
+
+  // Factory
+
+  trait Animal
+  private class Dog extends Animal
+  private class Cat extends Animal
+
+  object Animal {
+    def apply(kind: String) = kind match {
+      case "dog" => new Dog()
+      case "cat" => new Cat()
+    }
+  }
+
+  Animal("dog")
 
 }
