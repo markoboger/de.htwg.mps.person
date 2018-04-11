@@ -1,14 +1,15 @@
-import scala.util.Random
-import scala.concurrent.{Future, Promise}
+import scala.util.{Failure, Random, Success}
+import scala.concurrent.{Await, Future}
+import scala.concurrent.duration._
 import scala.concurrent.ExecutionContext.Implicits.global
 
 trait ConsumerAndProducer[Output]  {
   var fillLevel:Int
-  def consume(units:Int = 1, output:Output):Future[Output] = {
+  def consume(units:Int = 1, output:Output):Future[Output] = Future {
     if (fillLevel >= units) {
       fillLevel = fillLevel-units
-      Some(output)
-    } else None
+      output
+    } else throw new IllegalStateException()
   }
 }
 
@@ -61,12 +62,12 @@ CoffeeMachine.coffee
 CoffeeMachine.water
 CoffeeMachine.milk
 
-CoffeeMachine.prepareCappuccino
+Await.ready(CoffeeMachine.prepareCappuccino,1.second)
 CoffeeMachine.coffee
 CoffeeMachine.water
 CoffeeMachine.milk
 
-CoffeeMachine.prepareCappuccino
+Await.ready(CoffeeMachine.prepareCappuccino,1.second)
 CoffeeMachine.coffee
 CoffeeMachine.water
 CoffeeMachine.milk
