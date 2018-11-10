@@ -1,18 +1,14 @@
+
 name := """de.htwg.scala.inAction"""
 
 version := "1.0"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.12.7"
 
-// Change this to another test framework if you prefer
-libraryDependencies += "org.scalatest" %% "scalatest" % "2.2.4" % "test"
+libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.5"
+libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test"
 
-libraryDependencies += "junit" % "junit" % "4.11" % "test"
+libraryDependencies += "org.typelevel" %% "spire" % "0.14.1"
 
-libraryDependencies += "org.spire-math" %% "spire" % "0.11.0"
+libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.20.0"
 
-libraryDependencies += "com.github.nscala-time" %% "nscala-time" % "2.12.0"
-
-scalacOptions in Test ++= Seq("-Yrangepos")
-
-fork in run := true

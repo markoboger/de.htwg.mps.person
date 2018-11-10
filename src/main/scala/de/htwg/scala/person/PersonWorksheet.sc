@@ -1,6 +1,6 @@
-package de.htwg.scala.person
+import de.htwg.scala.person.{Person, Date}
 
-object PersonWorksheet {
+
   1+2+3                                           //> res0: Int = 6
   
   val peter = new Person("Peter", new Date(2009,7,4))
@@ -30,4 +30,3 @@ object PersonWorksheet {
   list.foreach(p => println(greeting(p)))         //> Hello Peter
                                                   //| Hi Paul
                                                   //| Welcome Mary
-}

@@ -31,7 +31,7 @@ object L03_Functions {
   
   def primes(min:Int, max:Int) = {
   	var sieve = (2 to max).toList
-  	for(i <- 2 to max/2; j <- 2 to i) sieve = sieve - i*j
+  	for(i <- 2 to max/2; j <- 2 to i) sieve = sieve.filter( _!= i*j)
   	//sieve.dropWhile(i=>i<min)
   	while (sieve.head < min) {sieve = sieve.tail}
   	sieve

@@ -1,4 +1,3 @@
-package de.htwg
 
 object L13_Algebra {
   import spire.math._

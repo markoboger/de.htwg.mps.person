@@ -66,13 +66,13 @@ object L06_Functions {
                                                   //| o), List(n, o, w))
   stringlist.flatMap(_.toList)                    //> res11: List[Char] = List(I, t, ', s, a, f, a, r, f, a, r, b, e, t, t, e, r,
                                                   //|  t, h, i, n, g, I, d, o, n, o, w)
-  stringlist.sort(_ < _)                          //> res12: List[java.lang.String] = List(I, It's, a, better, do, far, far, now,
+  stringlist.sortWith(_ < _)                          //> res12: List[java.lang.String] = List(I, It's, a, better, do, far, far, now,
                                                   //|  thing)
 
-  stringlist.sort(_ > _)                          //> res13: List[java.lang.String] = List(thing, now, far, far, do, better, a, I
+  stringlist.sortWith(_ > _)                          //> res13: List[java.lang.String] = List(thing, now, far, far, do, better, a, I
                                                   //| t's, I)
 
-  stringlist.sort(_.toUpperCase < _.toUpperCase)  //> res14: List[java.lang.String] = List(a, better, do, far, far, I, It's, now,
+  stringlist.sortWith(_.toUpperCase < _.toUpperCase)  //> res14: List[java.lang.String] = List(a, better, do, far, far, I, It's, now,
                                                   //|  thing)
 
   list.foldLeft(0)(_ + _)                         //> res15: Int = 81
@@ -80,10 +80,10 @@ object L06_Functions {
   val wordlist = List("Once", "more", "unto", "the", "breach")
                                                   //> wordlist  : List[java.lang.String] = List(Once, more, unto, the, breach)
   //Function chaining
-  wordlist.flatMap(_.toList).map(_.toUpperCase).removeDuplicates.sort(_ < _)
+  wordlist.flatMap(_.toList).map(_.toUpper).distinct.sortWith(_ < _)
                                                   //> res16: List[Char] = List(A, B, C, E, H, M, N, O, R, T, U)
 
-  def uniqueLetters(list: List[String]) = list.flatMap(_.toList).map(_.toUpperCase).removeDuplicates.sort(_ < _)
+  def uniqueLetters(list: List[String]) = list.flatMap(_.toList).map(_.toUpper).distinct.sortWith(_ < _)
                                                   //> uniqueLetters: (list: List[String])List[Char]
 
   uniqueLetters(wordlist)                         //> res17: List[Char] = List(A, B, C, E, H, M, N, O, R, T, U)

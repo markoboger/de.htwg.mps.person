@@ -66,6 +66,6 @@ object L02_Types {
   
   var sieve = (2 to 25).toList                    //> sieve  : List[Int] = List(2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 1
                                                   //| 6, 17, 18, 19, 20, 21, 22, 23, 24, 25)
-  for(i <- 2 to 25/2; j <- 2 to i) sieve = sieve - i*j
+  for(i <- 2 to 25/2; j <- 2 to i) sieve = sieve.filter(_!= i*j)
   sieve                                           //> res12: List[Int] = List(2, 3, 5, 7, 11, 13, 17, 19, 23)
 }

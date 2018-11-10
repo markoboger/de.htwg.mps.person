@@ -1,4 +1,3 @@
-package de.htwg
 
 object L10_Monads {
   println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet

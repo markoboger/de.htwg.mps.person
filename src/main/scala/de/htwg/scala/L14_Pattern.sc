@@ -1,4 +1,3 @@
-package de.htwg.scala
 
 import scala.util.Random._
 
