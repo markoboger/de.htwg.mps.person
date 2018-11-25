@@ -72,10 +72,10 @@ object L10_Monads {
 	
 	
   val pack1 = new Pack(List(new Bottle, new Bottle, new Bottle, new Bottle))
-                                                  //> pack1  : de.htwg.L10_Monads.Pack = UUUU
+
 	val pack2 = new Pack(List(new Bottle, new Bottle, new Bottle, new Bottle))
-                                                  //> pack2  : de.htwg.L10_Monads.Pack = UUUU
-	val crate1 = new Crate(List(pack1, pack2))//> crate1  : de.htwg.L10_Monads.Crate = L_____J
+
+	val crate1 = new Crate(List(pack1, pack2))
 	
 	def consumeAll(crate:Crate) = {
 		var packs = crate.packs
@@ -85,42 +85,22 @@ object L10_Monads {
 				bottle.consume
 			}
 		}
-	}                                         //> consumeAll: (crate: de.htwg.L10_Monads.Crate)Unit
+	}
 	
-	consumeAll(crate1)                        //>  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
+	consumeAll(crate1)
+
+
 	def consumeAllWithFor(crate:Crate) = {
 	  for (pack <- crate1;
        bottle <- pack) yield bottle.consume
-	}                                         //> consumeAllWithFor: (crate: de.htwg.L10_Monads.Crate)List[de.htwg.L10_Monads
-                                                  //| .Bottle]
- consumeAllWithFor(crate1)                        //>  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //| res9: List[de.htwg.L10_Monads.Bottle] = List(b, b, b, b, b, b, b, b)
-       
+	}
+ consumeAllWithFor(crate1)
+
   val pack3 = new Pack(List(new Bottle, null, new Bottle, new Bottle))
-                                                  //> pack3  : de.htwg.L10_Monads.Pack = UUUU
+
 	val pack4 = new Pack(List(new Bottle, new Bottle, null, new Bottle))
-                                                  //> pack4  : de.htwg.L10_Monads.Pack = UUUU
-	
-	val crate2 = new Crate(List(pack3, pack4))//> crate2  : de.htwg.L10_Monads.Crate = L_____J
-	//for (pack <- crate2;
-  //     bottle <- pack) yield bottle.cleans
-  
- 
-   
+
+	val crate2 = new Crate(List(pack3, pack4))
   
  def consumeAllAssumeNull(crate:Crate) = {
  		if (crate != null) {
@@ -139,27 +119,20 @@ object L10_Monads {
  					}
  			} else println ("Found a null for packs")
  		}	else println ("Found a null for crate")
- }                                                //> consumeAllAssumeNull: (crate: de.htwg.L10_Monads.Crate)Unit
+ }
  	
- consumeAllAssumeNull(crate2)                     //>  consuming... 
-                                                  //| Found a null for bottle
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //| Found a null for bottle
-                                                  //|  consuming... 
+ consumeAllAssumeNull(crate2)
+
 /*
 trait Option[Bottle] {
 	def map(f:Bottle => Bottle):Option[Bottle]
-	def cleans
 }
 
 case class Some[Bottle](val b:Bottle) extends Option[Bottle] {
 	def map(f:Bottle => Bottle) = new Some(f(b))
 }
 
-case class None[Bottle] extends Option[Bottle] {
+case class None[Bottle]() extends Option[Bottle] {
 	def map(f:Bottle => Bottle) = new None
 }
 */
@@ -174,31 +147,21 @@ class PackT[T](val bottles:List[T]) {
 		override def toString="L_____J"
 	}
 	
-val maybeBottle:Option[Bottle] = Some(new Bottle) //> maybeBottle  : Option[de.htwg.L10_Monads.Bottle] = Some(B)
+val maybeBottle:Option[Bottle] = Some(new Bottle)
 val pack5= new PackT( List(Some(new Bottle), None, Some(new Bottle), Some(new Bottle)))
-                                                  //> pack5  : de.htwg.L10_Monads.PackT[Option[de.htwg.L10_Monads.Bottle]] = UUUU
-                                                  //| 
+
 val pack6= new PackT( List(Some(new Bottle), Some(new Bottle), None, Some(new Bottle)))
-                                                  //> pack6  : de.htwg.L10_Monads.PackT[Option[de.htwg.L10_Monads.Bottle]] = UUUU
-                                                  //| 
+
 val crate3 = new CrateT(List(Some(pack5),Some(pack6)))
-                                                  //> crate3  : de.htwg.L10_Monads.CrateT[Some[de.htwg.L10_Monads.PackT[Option[de
-                                                  //| .htwg.L10_Monads.Bottle]]]] = L_____J
 
 
-def consumeAllAssumeNullWithFor(pack:PackT[Option[Bottle]]) = {
+def consumeAllAssumeNoneWithFor(pack:PackT[Option[Bottle]]) = {
 		for (
 		   bottle <- pack.bottles) yield bottle match {
 			case Some(b) => b.consume
 			case None => println("Found None")
 		}
-		
-}                                                 //> consumeAllAssumeNullWithFor: (pack: de.htwg.L10_Monads.PackT[Option[de.htwg
-                                                  //| .L10_Monads.Bottle]])List[Any]
-consumeAllAssumeNullWithFor(pack5)                //>  consuming... 
-                                                  //| Found None
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //| res10: List[Any] = List(b, (), b, b)
+}
+consumeAllAssumeNoneWithFor(pack6)
 	
 }
