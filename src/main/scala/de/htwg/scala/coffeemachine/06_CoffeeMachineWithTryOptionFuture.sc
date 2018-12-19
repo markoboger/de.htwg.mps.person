@@ -29,23 +29,23 @@ case class CoffeeMachine(coffee:CoffeeBeanReservoir, water:WaterTank, milk:MilkB
   def grind: Future[Option[Try[CoffeePowder]]] = coffee.consume(output = new CoffeePowder)
   def heatWater: Future[Option[Try[HotWater]]] = water.consume(output = new HotWater)
   def foamMilk(milk: MilkBottle): Future[Option[Try[FoamedMilk]]] = milk.consume(output = new FoamedMilk)
-  def brewEspresso(coffee: Future[Option[Try[CoffeePowder]]], heatedWater: Future[Option[Try[HotWater]]]): Option[Try[Espresso]] = {
+  def brewEspresso(coffee: Future[Option[Try[CoffeePowder]]], heatedWater: Future[Option[Try[HotWater]]]): Future[Option[Try[Espresso]]] = {
     for ( c <- coffee;
           h <- heatedWater) yield {
-      Success(new Espresso)
+      Some(Success(new Espresso))
     }
   }
-  def combine(espresso: Option[Try[Espresso]], foamedMilk: Future[Option[Try[FoamedMilk]]]): Option[Try[Cappuccino]] = {
+  def combine(espresso: Future[Option[Try[Espresso]]], foamedMilk: Future[Option[Try[FoamedMilk]]]): Future[Option[Try[Cappuccino]]] = {
     for (e <- espresso;
          f <- foamedMilk) yield {
-      Success("This is a Cappuccino")
+      Some(Success("This is a Cappuccino"))
     }
   }
 
-  def prepareCappuccino: Option[Try[Cappuccino]] = {
+  def prepareCappuccino: Future[Option[Try[Cappuccino]]] = {
     val coffeePowder: Future[Option[Try[CoffeePowder]]] = grind
     val hotWater: Future[Option[Try[HotWater]]] = heatWater
-    val espresso: Option[Try[Espresso]] = brewEspresso(coffeePowder, hotWater)
+    val espresso: Future[Option[Try[Espresso]]] = brewEspresso(coffeePowder, hotWater)
     val foam: Future[Option[Try[FoamedMilk]]] = foamMilk(milk)
     combine(espresso, foam)
   }
