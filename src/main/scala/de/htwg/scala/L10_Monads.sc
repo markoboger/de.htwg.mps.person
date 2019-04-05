@@ -51,14 +51,22 @@
 
 
 	case class MaybeBottle(bottle:Option[Bottle]) {
-		def label : Option[Bottle] = bottle match {
-			case Some(bottle:Bottle) => Some(bottle.label)
-			case None => None
+		def label : MaybeBottle = bottle match {
+			case Some(bottle:Bottle) => copy(Some(bottle.label))
+			case None => copy(None)
+		}
+		def fill: MaybeBottle = bottle match {
+			case Some(bottle:Bottle) => copy(Some(bottle.fill))
+			case None => copy(None)
+		}
+		def capsule: MaybeBottle = bottle match {
+			case Some(bottle:Bottle) => copy(Some(bottle.capsule))
+			case None => copy(None)
 		}
 	}
 
-	val maybBottle = MaybeBottle(Some[new Bottle])
-	maybBottle.label
+	MaybeBottle(Some(new Bottle)).label.fill.capsule
+	MaybeBottle(None).label.fill.capsule
 
 	class Pack(val bottles:List[Bottle]) {
 		def map(f:Bottle => Bottle) = bottles.map(bottle => f(bottle))
