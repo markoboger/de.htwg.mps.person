@@ -1,47 +1,73 @@
 
-object L10_Monads {
-  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+  println("Welcome to the Scala worksheet")
   
-  def isEven(x:Int) = x%2==0                      //> isEven: (x: Int)Boolean
+  def isEven(x:Int) = x%2==0
   
   
   for {
   	i <- 1 to 4
   	j <- 1 to i
   	if isEven(i+j)
-  } yield (i,j)                                   //> res0: scala.collection.immutable.IndexedSeq[(Int, Int)] = Vector((1,1), (2,2
-                                                  //| ), (3,1), (3,3), (4,2), (4,4))
+  } yield (i,j)
+
   
   (1 to 4) flatMap ( i =>
     (1 to i) filter (j => isEven(i+j))
-      map (j => (i,j)))                           //> res1: scala.collection.immutable.IndexedSeq[(Int, Int)] = Vector((1,1), (2,2
-                                                  //| ), (3,1), (3,3), (4,2), (4,4))
-  
-  var list = List(1,2,3,4)                        //> list  : List[Int] = List(1, 2, 3, 4)
+      map (j => (i,j)))
 
-	for (i <- list) yield i*i                 //> res2: List[Int] = List(1, 4, 9, 16)
+  
+  var list = List(1,2,3,4)
+
+	for (i <- list) yield i*i
 	
-	list.map(i=>i*i)                          //> res3: List[Int] = List(1, 4, 9, 16)
+	list.map(i=>i*i)
 	
-	var pairs = List (List(1,2), List(3,4))   //> pairs  : List[List[Int]] = List(List(1, 2), List(3, 4))
+	var pairs = List (List(1,2), List(3,4))
 	
 	pairs.map(pair => pair.map(int => int*int))
-                                                  //> res4: List[List[Int]] = List(List(1, 4), List(9, 16))
-	pairs.flatMap(pair => pair)               //> res5: List[Int] = List(1, 2, 3, 4)
+
+	pairs.flatMap(pair => pair)
 	
-	pairs.flatMap(pair => pair.map(i=>i*i))   //> res6: List[Int] = List(1, 4, 9, 16)
-	
-	
-	class Bottle {
-	  var empty=false
-		def consume = {
-			println(" consuming... ")
-			empty = true
-			this
-		}
-		override def toString= if (empty) "b" else "B"
+	pairs.flatMap(pair => pair.map(i=>i*i))
+
+
+	object BottleState extends Enumeration {
+		type BottleState = Value
+		val Empty, Labeled, Filled, Capsuled, Consumed = Value
 	}
-	
+	import BottleState._
+
+	case class Bottle(state: BottleState=Empty) {
+		def label: Bottle = copy(state=Labeled)
+		def fill:Bottle = copy(state=Filled)
+		def capsule:Bottle = copy(state=Capsuled)
+		def consume:Bottle = {
+			println(" consuming... ")
+			copy(Consumed)
+		}
+	}
+
+	new Bottle().label.fill.capsule
+
+
+	case class MaybeBottle(bottle:Option[Bottle]) {
+		def label : MaybeBottle = bottle match {
+			case Some(bottle:Bottle) => copy(Some(bottle.label))
+			case None => copy(None)
+		}
+		def fill: MaybeBottle = bottle match {
+			case Some(bottle:Bottle) => copy(Some(bottle.fill))
+			case None => copy(None)
+		}
+		def capsule: MaybeBottle = bottle match {
+			case Some(bottle:Bottle) => copy(Some(bottle.capsule))
+			case None => copy(None)
+		}
+	}
+
+	MaybeBottle(Some(new Bottle)).label.fill.capsule
+	MaybeBottle(None).label.fill.capsule
+
 	class Pack(val bottles:List[Bottle]) {
 		def map(f:Bottle => Bottle) = bottles.map(bottle => f(bottle))
 		override def toString="UUUU"
@@ -54,22 +80,10 @@ object L10_Monads {
 	}
 	
 	val pack = new Pack(List(new Bottle, new Bottle, new Bottle, new Bottle))
-                                                  //> pack  : de.htwg.L10_Monads.Pack = UUUU
+
 	
-  pack.map(bottle => bottle.consume)              //>  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //| res7: List[de.htwg.L10_Monads.Bottle] = List(b, b, b, b)
-	
+  pack.map(bottle => bottle.consume)
 	for (bottle <- pack.bottles) yield bottle.consume
-                                                  //>  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //|  consuming... 
-                                                  //| res8: List[de.htwg.L10_Monads.Bottle] = List(b, b, b, b)
-	
-	
 	
   val pack1 = new Pack(List(new Bottle, new Bottle, new Bottle, new Bottle))
 
@@ -164,4 +178,3 @@ def consumeAllAssumeNoneWithFor(pack:PackT[Option[Bottle]]) = {
 }
 consumeAllAssumeNoneWithFor(pack6)
 	
-}

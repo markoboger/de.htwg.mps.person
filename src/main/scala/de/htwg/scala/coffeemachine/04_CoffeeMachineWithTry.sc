@@ -1,14 +1,14 @@
-import scala.util.{Failure, Random, Success}
-import scala.concurrent.{Future, Promise}
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
+import scala.util.{Failure, Random, Success, Try}
 
 trait ConsumerAndProducer[Output]  {
   var fillLevel:Int
-  def consume(units:Int = 1, output:Output):Future[Output] = {
-    if (fillLevel >= units) {
-      fillLevel = fillLevel-units
-      Future.successful(output)
-    } else Future.failed(new Exception("fill level too low"))
+  def consume(units:Int = 1, output:Output):Try[Output] = {
+      if (fillLevel >= units) {
+        fillLevel = fillLevel - units
+        Success(output)
+      } else Failure(new Exception("Fill level too low"))
   }
 }
 
@@ -24,27 +24,27 @@ case class MilkBottle(var fillLevel:Int) extends ConsumerAndProducer[FoamedMilk]
 
 case class CoffeeMachine(coffee:CoffeeBeanReservoir, water:WaterTank, milk:MilkBottle){
 
-  def grind: Future[CoffeePowder] = coffee.consume(output = new CoffeePowder)
-  def heatWater: Future[HotWater] = water.consume(output = new HotWater)
-  def foamMilk(milk: MilkBottle): Future[FoamedMilk] = milk.consume(output = new FoamedMilk)
-  def brewEspresso(coffee: Future[CoffeePowder], heatedWater: Future[HotWater]): Future[Espresso] = {
+  def grind: Try[CoffeePowder] = coffee.consume(output = new CoffeePowder)
+  def heatWater: Try[HotWater] = water.consume(output = new HotWater)
+  def foamMilk(milk: MilkBottle): Try[FoamedMilk] = milk.consume(output = new FoamedMilk)
+  def brewEspresso(coffee: Try[CoffeePowder], heatedWater: Try[HotWater]): Try[Espresso] = {
     for ( c <- coffee;
           h <- heatedWater) yield {
       new Espresso
     }
   }
-  def combine(espresso: Future[Espresso], foamedMilk: Future[FoamedMilk]): Future[Cappuccino] = {
+  def combine(espresso: Try[Espresso], foamedMilk: Try[FoamedMilk]): Try[Cappuccino] = {
     for (e <- espresso;
          f <- foamedMilk) yield {
       "This is a Cappuccino"
     }
   }
 
-  def prepareCappuccino: Future[Cappuccino] = {
-    val coffeePowder: Future[CoffeePowder] = grind
-    val hotWater: Future[HotWater] = heatWater
-    val espresso: Future[Espresso] = brewEspresso(coffeePowder, hotWater)
-    val foam: Future[FoamedMilk] = foamMilk(milk)
+  def prepareCappuccino: Try[Cappuccino] = {
+    val coffeePowder: Try[CoffeePowder] = grind
+    val hotWater: Try[HotWater] = heatWater
+    val espresso: Try[Espresso] = brewEspresso(coffeePowder, hotWater)
+    val foam: Try[FoamedMilk] = foamMilk(milk)
     combine(espresso, foam)
   }
 }

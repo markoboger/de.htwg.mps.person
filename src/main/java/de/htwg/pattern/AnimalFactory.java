@@ -1,5 +1,6 @@
 package de.htwg.pattern;
 
+/*
 public interface Animal {}
 
 class Dog implements Animal {}
@@ -13,7 +14,7 @@ public class AnimalFactory {
         throw new IllegalArgumentException();
     }
 }
+*/
+//AnimalFactory.createAnimal("dog");
 
-AnimalFactory.createAnimal("dog");
 
-}
