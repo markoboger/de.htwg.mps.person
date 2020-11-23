@@ -36,3 +36,14 @@ libraryDependencies ++= javaFXModules.map( m =>
   "org.openjfx" % s"javafx-$m" % "11" classifier osName
 )
 
+val akkaVersion = "2.6.5"
+
+libraryDependencies ++= Seq(
+  // akka streams
+  "com.typesafe.akka" %% "akka-stream" % akkaVersion,
+  "com.typesafe.akka" %% "akka-actor-typed" % akkaVersion,
+)
+
+libraryDependencies += "org.apache.kafka" %% "kafka" % "2.6.0"
+
+
